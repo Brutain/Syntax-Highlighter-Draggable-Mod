@@ -1,0 +1,423 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>SyntaxHighlighter Build Test Page</title>
+<!--
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>-->
+
+<style>
+.syntaxhighlighter.class_name {
+	border: 5px solid silver !important;
+}
+
+div.small {
+	margin-bottom: 1em;
+	font-size: 9px;
+}
+
+.small code {
+	background-color: red !important;
+}
+
+div.narrow {
+	width: 650px !important;
+}
+</style>
+
+	<link type="text/css" rel="stylesheet" href="styles/shCore.css"/>
+	<link type="text/css" rel="Stylesheet" href="styles/shThemeDefault.css" id="theme" />
+</head>
+
+<body>
+
+<select onchange="onThemeChange(this)">
+	<option value="#FFF|shThemeDefault.css" selected="true">Default</option>
+	<option value="#000|shThemeDjango.css">Django</option>
+	<option value="#000|shThemeEclipse.css">Eclipse</option>
+	<option value="#000|shThemeEmacs.css">Emacs</option>
+	<option value="#000|shThemeFadeToGrey.css">FadeToGrey</option>
+	<option value="#000|shThemeMidnight.css">Midnight</option>
+	<option value="#000|shThemeRDark.css">RDark</option>
+</select>
+
+<h1>2.0 tests</h1>
+
+<h2>Basic test</h2>
+<div class="small">
+<pre class="brush: c#;">
+    package free.cafekiwi.gotapi;
+
+    function    foo()
+    {
+		/*   comment&nbsp;&nbsp;&nbsp;&nbsp;  */
+		alert("string");
+&nbsp;&nbsp;    &nbsp;&nbsp;bar();
+		baz();
+	}
+</pre>
+</div>
+
+<h2> Test loading some brushes by canonical name </h2>
+<pre class="brush: AS3">This is a trivial test of the AS3 brush (by name). Feel free to extend it.</pre>
+<pre class="brush: Bash">This is a trivial test of the Bash brush (by name). Feel free to extend it.</pre>
+
+
+<h2>Constrained width</h2>
+<div class="narrow">
+<pre class="brush: javascript; gutter: false; wrap-lines: false">
+SyntaxHighlighter.brushes/*languageName*/ = function() {
+    /* This function determines the styles for a particular syntax */
+};
+SyntaxHighlighter.brushes.Custom.prototype =
+    new SyntaxHighlighter.Highlighter();
+SyntaxHighlighter.brushes.Custom.aliases =
+    [/* An array of alternate names for this language */ ];
+</pre>
+</div>
+
+<h2> Using a title, no scrollbar </h2>
+<pre class="brush: javascript; title: 'Trivial Title Test'">
+	function makeTitle() {
+		return "Hello, world!";
+	}
+</pre>
+
+<h2> Using a title, with scrollbar </h2>
+<pre class="brush: javascript; title: 'Trivial Title Test'; wrap-lines: false">
+	function makeTitle() {
+		return "Hello, world! This is a very long title that I'm returning from the makeTitle() function to try to ensure that a scrollbar will be necessary.";
+	}
+</pre>
+
+<h2> Using a title, collapsed </h2>
+<pre class="brush: javascript; title: 'Trivial Title Test'; collapse: true; ruler: true; wrap-lines: false">
+	function makeTitle() {
+		return "Hello, world! This is a very long title that I'm returning from the makeTitle() function to try to ensure that a scrollbar will be necessary.";
+	}
+</pre>
+
+
+
+<h2>Test an instance of every brush</h2>
+<pre class="brush: actionscript3">This is a trivial test of the actionscript3 brush. Feel free to extend it.</pre>
+
+<!-- Bash brush test adapted from http://mlawire.blogspot.com/2009/07/convert-tabs-to-spaces.html.
+     The less-than and greater-than signs should appear as themselves, not as &lt; or &gt; -->
+<pre class="brush: bash">
+    #This is a test of the bash brush.
+
+    #expand/unexpand utilities
+    expand < input.txt > output.txt
+
+    #2 Sed
+    sed 's/\t/ /g' < input.txt > output.txt
+
+    #3 Awk
+    awk '{ gsub(/\t/, "  "); print }' < input.txt > output.txt
+     
+    #4 Perl
+    perl -pe 's/\t/  /g' < input.txt > output.txt
+     
+    #5 Ruby
+    ruby -pe '$_.gsub!(/\t/, "  ")' < input.txt > output.txt
+     
+    #6a Vim editor
+    :set expandtab
+    :%retab!
+
+    #6b Vim editor
+    :%s/\t/  /g
+
+    echo "Testing embedded < and > characters"
+
+    # The escape codes for < and > should be replaced by real angle brackets:
+    echo "Testing escaped &lt; and &gt; characters"
+
+    if [ "1" -gt "2" -o "2" -lt "1" ];
+        then echo 'Warning: Laws of arithmetic are no longer working!';
+        else echo 'Whew... that was close.';
+    fi
+</pre>
+
+<pre class="brush: c#">This is a trivial test of the c# brush. Feel free to extend it.</pre>
+<pre class="brush: cpp">This is a trivial test of the cpp brush. Feel free to extend it.</pre>
+<pre class="brush: css']">This is a trivial test of the css brush. Feel free to extend it.</pre>
+<pre class="brush: delphi">This is a trivial test of the delphi brush. Feel free to extend it.</pre>
+<pre class="brush: diff">This is a trivial test of the diff brush. Feel free to extend it.</pre>
+<pre class="brush: groovy']">This is a trivial test of the groovy brush. Feel free to extend it.</pre>
+<pre class="brush: js">This is a trivial test of the js brush. Feel free to extend it.</pre>
+<pre class="brush: java']">This is a trivial test of the java brush. Feel free to extend it.</pre>
+<pre class="brush: jfx">This is a trivial test of the jfx brush. Feel free to extend it.</pre>
+<pre class="brush: perl">This is a trivial test of the perl brush. Feel free to extend it.</pre>
+<pre class="brush: php']">This is a trivial test of the php brush. Feel free to extend it.</pre>
+<pre class="brush: text">This is a trivial test of the text brush. Feel free to extend it.</pre>
+<pre class="brush: powershell">This is a trivial test of the powershell brush. Feel free to extend it.</pre>
+<pre class="brush: py">This is a trivial test of the py brush. Feel free to extend it.</pre>
+<pre class="brush: ruby">This is a trivial test of the ruby brush. Feel free to extend it.</pre>
+<pre class="brush: scala']">This is a trivial test of the scala brush. Feel free to extend it.</pre>
+<pre class="brush: sql']">
+/* SQL Brush */
+GO
+DECLARE @MyProduct int;
+SET @MyProduct = 750;
+IF (@MyProduct<>0)
+   SELECT ProductID, Name, ProductNumber
+   FROM Production.Product
+   WHERE ProductID = @MyProduct
+GO
+</pre>
+<pre class="brush: vb">This is a trivial test of the vb brush. Feel free to extend it.</pre>
+
+<pre class="brush: xml">
+<!-- XML Brush -->
+&lt;?xml version="1.0" encoding="ISO-8859-1" ?>
+<playlist version="1" xmlns="http://xspf.org/ns/0/">
+  &lt;title>XSPF Test Playlist (songs from PGS3000)&lt;/title>
+  <trackList>
+    <track>
+	<!-- Test embedded URLs that terminate at a left angle bracket.
+		 See bug #28: http://bitbucket.org/alexg/syntaxhighlighter/issue/28/ -->
+      <location>http://www.example.com/song1.mp3</location>
+    </track>
+  </trackList>
+</playlist>
+</pre>
+
+
+<h2>No controls</h2>
+<pre class="brush: groovy; toolbar: false">
+package free.cafekiwi.gotapi;
+1
+2
+3
+</pre>
+
+
+<h2>No gutter</h2>
+<pre class="brush: groovy; gutter: false">
+  package free.cafekiwi.gotapi;
+  1
+  2
+  3
+</pre>
+
+
+<h2>Collapsed</h2>
+<pre class="brush: groovy; collapse: true; ruler: true">
+   package free.cafekiwi.gotapi;
+   1
+   2
+   3
+4  // this would be a pretty long line The "Corresponding Application Code" for a Combined Work means the object code and/or source code for the Application, including any data and utility programs needed for reproducing the Combined Work from the Application, but excluding the System Libraries of the Combined Work.
+</pre>
+
+
+<h2>First line number</h2>
+<pre class="brush: groovy; first-line: 10">
+package free.cafekiwi.gotapi;
+// This is line 11
+// This is line 12
+// This is line 13
+</pre>
+
+
+<h2>Ruler, with line wrapping enabled</h2>
+<pre class="brush: groovy; ruler: true">
+package  free.cafekiwi.gotapi;
+ 1  // this would be a pretty long line The "Corresponding Application Code" for a Combined Work means the object code and/or source code for the Application, including any data and utility programs needed for reproducing the Combined Work from the Application, but excluding the System Libraries of the Combined Work.
+  2
+   3
+</pre>
+
+<h2>Ruler, with scrollbar</h2>
+<pre class="brush: groovy; ruler: true; wrap-lines: false;first-line: 100000">
+package   free.cafekiwi.gotapi;
+1  // this would be a pretty long line &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The "Corresponding Application Code" for a Combined Work means the object code and/or source code for the Application, including any data and utility programs needed for reproducing the Combined Work from the Application, but excluding the System Libraries of the Combined Work.
+2
+3
+</pre>
+
+
+<h2>Light</h2>
+<pre class="brush: groovy; light: true">
+package free.cafekiwi.gotapi;
+1
+2
+3
+</pre>
+
+
+<h2>Class Name</h2>
+<pre class="brush: groovy; class-name: 'class_name'">
+package free.cafekiwi.gotapi;
+1 This tests the 'class-name' setting. If the code is working,
+2 then this file's custom CSS draws a grey border around
+3 this box.
+</pre>
+
+<h2>Highlight lines</h2>
+<pre class="brush: groovy; highlight: 2">
+1
+2
+3
+4
+</pre>
+<pre class="brush: groovy; highlight: [2, 4, 12]">
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+</pre>
+
+<h2>HTML Script</h2>
+<pre class="brush: groovy; html-script: true">
+&lt;hello>
+	&lt;%
+		package free.cafekiwi.gotapi;
+	%>
+&lt;/hello>
+</pre>
+
+<h2>Smart tabs</h2>
+<pre class="brush: groovy;">
+123	12	12	1
+	123	12	12	1
+</pre>
+
+<h2>Smart tab size=8</h2>
+<pre class="brush: groovy; tab-size: 8; ruler: true">
+1234567	1234	12	1
+	1234	12	12	1
+</pre>
+
+<h2>Smart tab size=5</h2>
+<pre class="brush: groovy; tab-size: 5; ruler: true">
+1234	1234	12	1
+12345	1234	12	1
+	1234	12	12	1
+</pre>
+
+
+<h2>No smart tabs</h2>
+<pre class="brush: groovy; smart-tabs: false">
+123	12	12	1
+	123	12	12	1
+</pre>
+
+<h2>Hanselman &lt;br /> test</h2>
+<pre class="brush: js;">
+	function onThemeChange(sender)<br/>
+	{<br/>
+		var parts = sender.value.split('|');<br/>
+		document.getElementById("theme").href = "styles/" + parts[1];<br/>
+		document.body.style.backgroundColor = parts[0];<br/>
+	}<br/>
+</pre>
+
+<h2>Wrapping tests</h2>
+<pre class="brush: js; ruler: true; tab-size: 4">
+	function onThemeChange(sender)
+	{
+		var parts = sender.value.split('    |		');
+		document.getElementById("theme").href = "styles/" +     parts[1];
+		document.body.style.backgroundColor = parts[0];
+		// this would be a pretty long line The "Corresponding Application Code" for a Combined Work means the object code and/or source code for the Application, including any data and utility programs needed for reproducing the Combined Work from the Application, but excluding the System Libraries of the Combined Work.
+
+					// Here's a longer line with a larger initial indentation. The "Corresponding Application Code" for a Combined Work means the object code and/or source code for the Application, including any data and utility programs needed for reproducing the Combined Work from the Application, but excluding the System Libraries of the Combined Work.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Here's a line indented to column 28 using &amp;nbsp;. The "Corresponding Application Code" for a Combined Work means the object code and/or source code for the Application, including any data and utility programs needed for reproducing the Combined Work from the Application, but excluding the System Libraries of the Combined Work.
+
+// Here's a longish line with no indentation. The "Corresponding Application Code" for a Combined Work means the object code and/or source code for the Application, including any blah blah blah...
+	}
+</pre>
+
+<div class="small">
+<pre class="brush: js; ruler: true; tab-size: 4">
+	function onThemeChange(sender)
+	{
+		var parts = sender.value.split('    |		');
+		document.getElementById("theme").href = "styles/" +     parts[1];
+		document.body.style.backgroundColor = parts[0];
+		// this would be a pretty long line The "Corresponding Application Code" for a Combined Work means the object code and/or source code for the Application, including any data and utility programs needed for reproducing the Combined Work from the Application, but excluding the System Libraries of the Combined Work.
+
+					// Here's a longer line with a larger initial indentation. The "Corresponding Application Code" for a Combined Work means the object code and/or source code for the Application, including any data and utility programs needed for reproducing the Combined Work from the Application, but excluding the System Libraries of the Combined Work.
+
+							// Here's a longer line with a larger initial indentation. The "Corresponding Application Code" for a Combined Work means the object code and/or source code for the Application, including any data and utility programs needed for reproducing the Combined Work from the Application, but excluding the System Libraries of the Combined Work.
+
+// Here's a longish line with no indentation. The "Corresponding Application Code" for a Combined Work means the object code and/or source code for the Application, including any blah blah blah...
+	}
+</pre>
+</div>
+
+<h2>No wrapping test</h2>
+<pre class="brush: js; wrap-lines: false">
+	function onThemeChange(sender)
+	{
+		var parts = sender.value.split('|');
+		document.getElementById("theme").href = "styles/" + parts[1];
+		document.body.style.backgroundColor = parts[0];
+		// this would be a pretty long line The "Corresponding Application Code" for a Combined Work means the object code and/or source code for the Application, including any data and utility programs needed for reproducing the Combined Work from the Application, but excluding the System Libraries of the Combined Work.
+	}
+</pre>
+
+<h2> Test &lt;SCRIPT> tag</h2> 
+<script type="syntaxhighlighter" class="brush: js"><![CDATA[
+    /**
+     * SyntaxHighlighter
+     */
+    function foo()
+    {
+        // <It works!>
+    }
+]]></script>
+
+<script type="text/javascript" src="src/shCore.js"></script>
+<script type="text/javascript" src="scripts/shBrushAS3.js"></script>
+<script type="text/javascript" src="scripts/shBrushBash.js"></script>
+<script type="text/javascript" src="scripts/shBrushCpp.js"></script>
+<script type="text/javascript" src="scripts/shBrushCSharp.js"></script>
+<script type="text/javascript" src="scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="scripts/shBrushDelphi.js"></script>
+<script type="text/javascript" src="scripts/shBrushDiff.js"></script>
+<script type="text/javascript" src="scripts/shBrushGroovy.js"></script>
+<script type="text/javascript" src="scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="scripts/shBrushJavaFX.js"></script>
+<script type="text/javascript" src="scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="scripts/shBrushPerl.js"></script>
+<script type="text/javascript" src="scripts/shBrushPhp.js"></script>
+<script type="text/javascript" src="scripts/shBrushPlain.js"></script>
+<script type="text/javascript" src="scripts/shBrushPowerShell.js"></script>
+<script type="text/javascript" src="scripts/shBrushPython.js"></script>
+<script type="text/javascript" src="scripts/shBrushRuby.js"></script>
+<script type="text/javascript" src="scripts/shBrushScala.js"></script>
+<script type="text/javascript" src="scripts/shBrushSql.js"></script>
+<script type="text/javascript" src="scripts/shBrushVb.js"></script>
+<script type="text/javascript" src="scripts/shBrushXml.js"></script>
+
+<script type="text/javascript">
+SyntaxHighlighter.config.stripBrs = true;
+SyntaxHighlighter.all();
+
+
+function onThemeChange(sender)
+{
+	var parts = sender.value.split('|');
+	document.getElementById("theme").href = "styles/" + parts[1];
+	document.body.style.backgroundColor = parts[0];
+}
+</script>
+
+</body>
+</html>

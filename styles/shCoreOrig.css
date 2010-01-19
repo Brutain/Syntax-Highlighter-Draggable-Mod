@@ -1,0 +1,454 @@
+/**
+ * SyntaxHighlighter
+ * http://alexgorbatchev.com/
+ *
+ * SyntaxHighlighter is donationware. If you are using it, please donate.
+ * http://alexgorbatchev.com/wiki/SyntaxHighlighter:Donate
+ *
+ * @version
+ * 2.1.364.1 (18-Dec-2009)
+ * 
+ * @copyright
+ * Copyright (C) 2004-2009 Alex Gorbatchev.
+ * Portions Copyright (C) 2009 Dan Breslau
+ *
+ * @license
+ * This file is part of SyntaxHighlighter.
+ * 
+ * SyntaxHighlighter is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * SyntaxHighlighter is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with SyntaxHighlighter.  If not, see <http://www.gnu.org/copyleft/lesser.html>.
+ */
+.syntaxhighlighter,
+.syntaxhighlighter div,
+.syntaxhighlighter code,
+.syntaxhighlighter span
+{
+	margin: 0 !important;
+	padding: 0 !important;
+	border: 0 !important;
+	outline: 0 !important;
+	background: none !important;
+	text-align: left !important;
+	float: none !important;
+
+	vertical-align: 0 !important;
+
+	line-height: 120% !important;
+
+	position: static !important;
+	left: auto !important;
+	top: auto !important;
+	right: auto !important;
+	bottom: auto !important;
+	height: auto;
+	font-family: "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 1em;
+}
+
+.syntaxhighlighter,
+.syntaxhighlighter code
+{
+	width: auto !important;
+}
+
+.syntaxhighlighter span,
+.syntaxhighlighter div
+{
+	width: auto;
+}
+
+.syntaxhighlighter
+{
+	margin: 1em 0 1em 0 !important;
+	padding: 1px !important; /* adds a little border on top and bottom */
+	position: relative !important;
+}
+
+.syntaxhighlighter div.title
+{
+	border-bottom: 2px solid #bbb !important;
+	padding-bottom: 3px !important;
+}
+
+.syntaxhighlighter span.title
+{
+	margin-left: 4em !important; 
+
+	position: absolute !important;
+	left: 0 !important;
+	top: 0 !important;
+
+	font-weight: bold;
+	font-size: 1.1em;
+	font-family: Arial,Helvetica,Sans-serif;
+}
+
+.syntaxhighlighter code {
+	display: inline !important;
+}
+
+.syntaxhighlighter code.lineTerm {
+	white-space: pre-wrap !important;
+}
+
+.syntaxhighlighter code.blankLine {
+	white-space: pre !important;
+	padding-left: 1px !important;
+}
+
+.syntaxhighlighter .bold {
+	font-weight: bold !important;
+}
+
+.syntaxhighlighter .italic {
+	font-style: italic !important;
+}
+
+.syntaxhighlighter div.line
+{
+	width: 100% !important;
+}
+
+.syntaxhighlighter .line .number
+{
+	width: 3em !important; 
+	padding-right: .3em !important;
+	text-align: right !important;
+	display: inline !important;
+	position: absolute !important;
+	left: 0 !important;
+	background: inherit !important;
+}
+
+
+.syntaxhighlighter .number.bg
+{
+	/* 
+	 * The first number element in a div is stretched vertically to provide
+	 * a solid background for all gutter elements, hiding any gaps between them.
+	 */
+	display: block !important;
+}
+
+
+.syntaxhighlighter .line .content,
+.syntaxhighlighter .line .ruler
+{
+	margin-left: 3.3em !important;
+	padding-left: .5em !important;
+	display: block !important;
+}
+
+
+.syntaxhighlighter .lines.no-wrap .line .content,
+.syntaxhighlighter .lines.no-wrap .line .ruler
+{
+	margin-left: 3.3em !important;
+}
+
+.syntaxhighlighter.nogutter .lines .line .content,
+.syntaxhighlighter.nogutter .lines .line .ruler
+{
+	margin-left: 0 !important;
+}
+
+
+.syntaxhighlighter .line .content .block
+{
+	display: block !important;
+	background: url(wrapping.png) 0 1.1em no-repeat !important;
+	white-space: pre-wrap !important;
+}
+
+.syntaxhighlighter .no-wrap .line .content .block
+{
+	background: none !important;
+	white-space: pre !important;
+}
+
+/* Disable border and margin on the lines when no gutter option is set */
+.syntaxhighlighter.nogutter .line .content
+{
+	border-left: none !important;
+}
+
+.syntaxhighlighter .bar
+{
+	position: inherit;
+	display: none !important;
+}
+
+.syntaxhighlighter.ieHover:hover .bar,
+.syntaxhighlighter .lines:hover .bar,
+.syntaxhighlighter.showToolbar .lines .bar 
+{
+	display: block !important;
+}
+
+.syntaxhighlighter .bar .toolbar
+{
+	opacity: 0.78;
+
+	filter:alpha(opacity=78);
+
+	/* For IE 5-7 */
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=78);
+
+	/* For IE 8 */
+	-MS-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=78)";
+}
+
+.syntaxhighlighter .bar:hover .toolbar,
+.syntaxhighlighter.showToolbar .toolbar
+{
+	opacity: 0.95;
+
+	filter:alpha(opacity=95);
+
+	/* For IE 5-7 */
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=95);
+
+	/* For IE 8 */
+	-MS-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=95)";
+}
+
+.syntaxhighlighter.collapsed .bar
+{
+	display: block !important;
+}
+
+.syntaxhighlighter .line .ruler
+{
+	overflow: hidden !important;
+}
+
+.syntaxhighlighter div.rulerLine
+{
+	padding-bottom: 8px !important;
+}
+
+/* Adjust some properties when collapsed */
+
+.syntaxhighlighter.collapsed .line
+{
+	display: none !important;
+}
+
+
+.syntaxhighlighter .scroll
+{
+	overflow: auto !important;
+	overflow-y: hidden !important;
+}
+
+/* IE 6(?) and 7 position the horizontal scrollbar over the last 
+ * line in the display, creating the need for a vertical scrollbar too.
+ */
+.syntaxhighlighter .scroll.ieFix
+{
+	overflow-y: auto !important;
+}
+
+/* Styles for the toolbar */
+
+.syntaxhighlighter .toolbar
+{
+	position: absolute !important;
+	right: 0px !important;
+	top: 0px !important;
+	padding: 8px 8px 8px 0 !important; /* in px because images don't scale with ems */
+}
+
+.syntaxhighlighter.collapsed .toolbar
+{
+	font-size: 80% !important;
+	padding: .2em 0 .5em .5em !important;
+	position: static !important;
+}
+
+.syntaxhighlighter .toolbar a
+{
+	background: white url(tbsprites.png) 0px 0px no-repeat;
+}
+
+.syntaxhighlighter .toolbar .item
+{
+	margin-left: 8px !important;
+	display: inline !important;
+	float: left !important;
+	background-repeat: no-repeat !important;
+	overflow: hidden !important;
+	height: 16px !important;
+	width: 16px !important;
+}
+
+.syntaxhighlighter.collapsed .toolbar .item
+{
+	display: none !important;
+}
+
+.syntaxhighlighter .toolbar .item.expandSource
+{
+	display: none !important;
+}
+
+.syntaxhighlighter.collapsed .toolbar .item.expandSource
+{
+	display: inline !important;
+	background-position: 0 -76px;
+	float: none !important;
+	padding-left: 20px !important;
+}
+
+.syntaxhighlighter .toolbar .item.viewSource
+{
+	background-position: 0 -122px !important;
+}
+
+.syntaxhighlighter .toolbar .item.toggleLineNumbers
+{
+	background-position: 0 -214px !important;
+}
+
+.syntaxhighlighter .toolbar .item.collapseSource
+{
+	background-position: 0 -260px;
+}
+
+
+.syntaxhighlighter .toolbar .item.printSource
+{
+	background-position: 0 -168px !important;
+}
+
+.syntaxhighlighter .toolbar .item.about
+{
+	background-position: 0 -30px !important;
+}
+
+/** 
+ * Print view.
+ * Colors are based on the default theme without background.
+ */
+
+@media print {
+	.syntaxhighlighter,
+	.syntaxhighlighter .line.alt1 .content,
+	.syntaxhighlighter .line.alt2 .content,
+	.syntaxhighlighter .line.highlighted .number,
+	.syntaxhighlighter .line.highlighted.alt1 .content,
+	.syntaxhighlighter .line.highlighted.alt2 .content,
+	.syntaxhighlighter .line .content .block
+	{
+		background: none !important;
+	}
+
+
+	/* Gutter line numbers */
+	.syntaxhighlighter .line .number
+	{
+		color: #bbb !important;
+	}
+
+	/* Add border to the lines */
+	.syntaxhighlighter .line .content
+	{
+		color: #000 !important;
+	}
+
+	/* Hide toolbar when printing */
+	.syntaxhighlighter .toolbar,
+	.syntaxhighlighter .line .ruler
+	{
+		display: none !important;
+	}
+
+	.syntaxhighlighter a
+	{
+		text-decoration: none !important;
+	}
+
+	.syntaxhighlighter .plain,
+	.syntaxhighlighter .plain a
+	{ 
+		color: #000 !important;
+	}
+
+	.syntaxhighlighter .comments,
+	.syntaxhighlighter .comments a
+	{ 
+		color: #008200 !important;
+	}
+
+	.syntaxhighlighter .string,
+	.syntaxhighlighter .string a
+	{
+		color: blue !important; 
+	}
+
+	.syntaxhighlighter .keyword
+	{ 
+		color: #069 !important; 
+		font-weight: bold !important; 
+	}
+
+	.syntaxhighlighter .preprocessor 
+	{ 
+		color: gray !important; 
+	}
+
+	.syntaxhighlighter .variable 
+	{ 
+		color: #a70 !important; 
+	}
+
+	.syntaxhighlighter .value
+	{ 
+		color: #090 !important; 
+	}
+
+	.syntaxhighlighter .functions
+	{ 
+		color: #ff1493 !important; 
+	}
+
+	.syntaxhighlighter .constants
+	{ 
+		color: #0066CC !important; 
+	}
+
+	.syntaxhighlighter .script
+	{
+		font-weight: bold !important;
+	}
+
+	.syntaxhighlighter .color1,
+	.syntaxhighlighter .color1 a
+	{ 
+		color: #808080 !important; 
+	}
+
+	.syntaxhighlighter .color2,
+	.syntaxhighlighter .color2 a
+	{ 
+		color: #ff1493 !important; 
+	}
+
+	.syntaxhighlighter .color3,
+	.syntaxhighlighter .color3 a
+	{ 
+		color: red !important; 
+	}
+}
